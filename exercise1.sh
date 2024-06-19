@@ -6,4 +6,5 @@ metadata:
   namespace: openshift-user-workload-monitoring
 data:
   config.yaml: |
+    enableUserWorkload: true
 EOF
