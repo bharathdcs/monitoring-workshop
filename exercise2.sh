@@ -2,14 +2,16 @@ oc apply -f - <<EOF
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: cpd-monitor
+  name: zenmetrics
   namespace: zen
 spec:
   endpoints:
-  - interval: 30s
-    port: zenwatchdog-notls
-    scheme: http
+    - interval: 5m
+      port: zenwatchdog-tls
+      scheme: https
+      tlsConfig:
+        insecureSkipVerify: true
   selector:
     matchLabels:
-      app: zen-adv
+      component: zen-watchdog
 EOF
