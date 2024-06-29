@@ -16,3 +16,6 @@ avg by (instance, nodename)(irate(node_cpu_seconds_total{mode!="idle"}[5m])) * 1
 
 #CPU USage compared to limit
 topk(25, sort_desc(100*sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace="zen"}) by (pod) / sum(kube_pod_container_resource_limits{resource="cpu",unit="core",namespace="zen"}) by (pod)))
+
+#last terminated reason
+kube_pod_container_status_last_terminated_reason{reason="Error"}
