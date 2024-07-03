@@ -9,6 +9,8 @@ spec:
     - interval: 5m
       port: zenwatchdog-tls
       scheme: https
+      tlsConfig:
+        insecureSkipVerify: true
   selector:
     matchLabels:
       component: zen-watchdog
